@@ -1,21 +1,16 @@
 package br.com.dio.challange.dominio;
 
-import java.awt.im.spi.InputMethodDescriptor;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Formatter;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Bootcamp {
 
     private String nome;
     private String descricao;
-    private Set<Curso> cursos = new HashSet<>();
-    private Set<Mentoria> mentorias = new HashSet<>();
+    private Set<Assuntos> assuntos = new HashSet<>();
+    private List<Devs> devs = new ArrayList<>();
     private LocalDate dataInicial = LocalDate.now();
-    private LocalDate dataFinal = LocalDate.now().plusDays(45);
+    private LocalDate dataFinal = dataInicial.plusDays(45);
 
     public String getNome() {
         return nome;
@@ -29,16 +24,40 @@ public class Bootcamp {
         return descricao;
     }
 
+    public List<Devs> getDevs() {
+        return devs;
+    }
+
+    public void setDevs(List<Devs> devs) {
+        this.devs = devs;
+    }
+
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
 
-    public void adicionarCurso(Curso curso){
-        cursos.add(curso);
+    public Set<Assuntos> getAssuntos() {
+        return assuntos;
     }
 
-    public void adicionarMentoria(Mentoria mentoria){
-        mentorias.add(mentoria);
+    public void setAssuntos(Set<Assuntos> assuntos) {
+        this.assuntos = assuntos;
+    }
+
+    public void adicionarAssunto(Assuntos assuntos){
+        this.assuntos.add(assuntos);
+   }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Bootcamp bootcamp = (Bootcamp) o;
+        return Objects.equals(nome, bootcamp.nome) && Objects.equals(descricao, bootcamp.descricao) && Objects.equals(assuntos, bootcamp.assuntos) && Objects.equals(devs, bootcamp.devs) && Objects.equals(dataInicial, bootcamp.dataInicial) && Objects.equals(dataFinal, bootcamp.dataFinal);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nome, descricao, assuntos, dataInicial, dataFinal);
     }
 
     @Override
@@ -46,8 +65,7 @@ public class Bootcamp {
         return "Bootcamp{" +
                 "nome='" + nome + '\'' +
                 ", descricao='" + descricao + '\'' +
-                ", cursos=" + cursos +
-                ", mentorias=" + mentorias +
+                ", assuntos=" + assuntos +
                 ", dataInicial=" + dataInicial +
                 ", dataFinal=" + dataFinal +
                 '}';

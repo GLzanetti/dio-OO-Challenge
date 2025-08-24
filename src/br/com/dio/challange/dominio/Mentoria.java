@@ -1,7 +1,6 @@
 package br.com.dio.challange.dominio;
 
 import java.time.LocalDate;
-import java.time.OffsetDateTime;
 
 public class Mentoria extends Assuntos{
 

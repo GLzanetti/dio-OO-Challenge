@@ -1,8 +1,5 @@
 package br.com.dio.challange.dominio;
 
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-
 public class Curso  extends Assuntos{
 
 
@@ -18,7 +15,7 @@ public class Curso  extends Assuntos{
 
     @Override
     public double calcularXp() {
-        return Xp_Padrao + (10 * cargaHoraria);
+        return Xp_Padrao + 120;
     }
 
     @Override
